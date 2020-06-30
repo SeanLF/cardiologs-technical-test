@@ -4,8 +4,8 @@ class Measurement
 
   def initialize(row)
     @wave_type = row.shift
-    @wave_onset = row.shift
-    @wave_offset = row.shift
+    @wave_onset = row.shift.to_i
+    @wave_offset = row.shift.to_i
     @wave_tags = row
   end
 
