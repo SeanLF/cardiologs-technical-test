@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  app: &app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: "2.7.1"
+        BUNDLER_VERSION: "2.1.4"
+    image: cardiologs:1.0.0
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+    environment:
+      - APP_ENV=${APP_ENV:-development}
+
+  runner:
+    <<: *app
+    command: /bin/bash
+    ports:
+      - "9292:9292"
+      - "3002:3002"
+
+  sinatra:
+    <<: *app
+    command: bundle exec rackup config.ru -o 0.0.0.0
+    ports:
+      - "9292:9292"
+
+volumes:
+  bundle:
