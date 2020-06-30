@@ -24,4 +24,8 @@ class Measurement
   def inv_wave?
     @wave_type == 'INV'
   end
+
+  def wave_duration
+    @wave_offset - @wave_onset
+  end
 end

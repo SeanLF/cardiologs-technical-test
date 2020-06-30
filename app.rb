@@ -36,7 +36,9 @@ class App < Sinatra::Application
 
     # The minimum and maximum heart rate, each with the time at which they happened.
     # As the date and the time of the recording are not included in the file, the client should be able to set them.
+    @min_max_heart_rates = min_max_heart_rates(@measurements)
 
+    @stylesheet_name = 'index'
     erb :delineation_result
   end
 

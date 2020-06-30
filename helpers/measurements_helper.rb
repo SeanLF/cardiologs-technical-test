@@ -3,9 +3,16 @@ module MeasurementsHelper
     measurements.count { |m| (m.p_wave? || m.qrs_wave?) && m.wave_tags.include?('premature') }
   end
 
-  # assumes the file gives one day's worth of measurements
   def mean_heart_rate(measurements)
     measurements.count(&:qrs_wave?).to_f / measurements_duration_in_ms(measurements)
+  end
+
+  def min_max_heart_rates(measurements)
+    qrs_measurements = measurements.select(&:qrs_wave?)
+    {
+      min: qrs_measurements.min_by(&:wave_duration),
+      max: qrs_measurements.max_by(&:wave_duration)
+    }
   end
 
   private
