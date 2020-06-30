@@ -7,6 +7,14 @@ describe App do
     it 'displays home page' do
       get '/'
 
+      expect(last_response.status).to eq(302)
+    end
+  end
+
+  describe 'GET /delineation' do
+    it 'displays delineation' do
+      get '/delineation'
+
       expect(last_response.status).to eq(200)
     end
   end
