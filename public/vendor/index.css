@@ -27,3 +27,66 @@ body {
   background-color: var(--background);
 }
 
+.card {
+  background: var(--background-card);
+  border-radius: 2px;
+  box-shadow: 0 10px 20px var(--box-shadow-a), 0 6px 6px var(--box-shadow-b);
+  margin: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  min-width: 20vw;
+  max-width: 30rem;
+}
+
+.card .header {
+  background: var(--primary);
+  padding: 1rem;
+  color: white;
+}
+
+.card .header a {
+  color: var(--secondary);
+}
+
+.actions {
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.actions div {
+  flex: 1;
+  text-align: center;
+  display: flex;
+}
+
+.actions a {
+  text-transform: uppercase;
+  padding: 0.7rem 0.5rem;
+  flex: 1;
+}
+
+.actions a span.show-icon-only {
+  display: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+a:active {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.18), 0 2px 1px rgba(0, 0, 0, 0.09);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(158, 158, 158, 0.4);
+}
