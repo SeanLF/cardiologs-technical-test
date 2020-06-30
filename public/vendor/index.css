@@ -48,6 +48,17 @@ body {
   color: var(--secondary);
 }
 
+.text {
+  flex: 1;
+  padding: 1rem;
+  line-height: 2;
+}
+
+.text p {
+  margin: 0;
+  line-height: 1.5;
+}
+
 .actions {
   border-top: 1px solid var(--border-color);
   display: flex;

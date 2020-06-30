@@ -1,4 +1,18 @@
 <style>
+main {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1;
+  justify-content: center;
+}
+
+main > * {
+  align-self: center;
+  position: relative;
+}
+.card {
+  max-width: initial;
+}
 thead{
   padding: 0.5rem;
 }
@@ -10,35 +24,40 @@ td{
 }
 </style>
 
-<h1>Delineation results</h1>
+<div class="card">
+  <div class="header"><h1>Delineation results</h1></div>
 
-<h2>The number of P waves tagged "premature", as well as the number of QRS complexes tagged "premature"</h2>
-Count: <%= @premature_p_and_qrs_wave_count %>
+  <div class="text">
+    <h2>The number of P waves tagged "premature", as well as the number of QRS complexes tagged "premature"</h2>
+    Count: <%= @premature_p_and_qrs_wave_count %>
 
-<h2>The mean heart rate of the recording (Frequency at which QRS complexes appear).</h2>
-QRS waves per ms: <%= @mean_heart_rate %>
+    <h2>The mean heart rate of the recording (Frequency at which QRS complexes appear).</h2>
+    QRS waves per ms: <%= @mean_heart_rate %>
 
-<h2>The minimum and maximum heart rate, each with the time at which they happened.</h2>
+    <h2>The minimum and maximum heart rate, each with the time at which they happened.</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Minimum</th>
-      <th colspan="2">Maximum</th>
-    </tr>
-    <tr>
-      <th>Wave duration</th>
-      <th>Wave onset</th>
-      <th>Wave duration</th>
-      <th>Wave onset</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @min_max_heart_rates[:min].wave_duration %></td>
-      <td><%= @min_max_heart_rates[:min].wave_onset %></td>
-      <td><%= @min_max_heart_rates[:max].wave_duration %></td>
-      <td><%= @min_max_heart_rates[:max].wave_onset %></td>
-    </tr>
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Minimum</th>
+          <th colspan="2">Maximum</th>
+        </tr>
+        <tr>
+          <th>Wave duration</th>
+          <th>Wave onset</th>
+          <th>Wave duration</th>
+          <th>Wave onset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @min_max_heart_rates[:min].wave_duration %></td>
+          <td><%= @min_max_heart_rates[:min].wave_onset %></td>
+          <td><%= @min_max_heart_rates[:max].wave_duration %></td>
+          <td><%= @min_max_heart_rates[:max].wave_onset %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
